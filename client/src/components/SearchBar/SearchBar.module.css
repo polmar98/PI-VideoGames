@@ -1,0 +1,21 @@
+.boton {
+    margin-right: 10px;
+  }    
+  
+  .boton:hover {
+      background-color: #023;
+      color: rgb(163, 111, 111);
+      cursor: pointer;
+  }
+  
+  .input {
+     width: 100px;
+     outline-offset: 0cap;
+     font-weight: 100;
+     text-align: center;
+  }
+  
+  .input:hover {
+      background-color: coral;
+  }
+  

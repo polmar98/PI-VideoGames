@@ -1,0 +1,11 @@
+.App {
+  text-align: center;
+  padding: 0px;
+}
+
+body {
+  background-image: url('./img/vgames2.jpg');
+  background-attachment:fixed;
+  background-size:cover;
+}
+
