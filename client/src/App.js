@@ -1,10 +1,22 @@
+import React from 'react';
 import './App.css';
+import { Routes, Route} from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar';
+import Home from './views/Home';
+import Landing from './views/Landing';
+import Form from './views/Form';
+import About from './views/About';
 
 function App() {
   return (
     <div className="App">
       <Navbar/>
+      <Routes>
+          <Route path="/" element={<Home/>} />
+          <Route path="/About" element={<About/>} />
+          <Route path='/Landing' element={<Landing/>} />
+          <Route path="/Form" element={<Form/>} />
+       </Routes>
     </div>
   );
 }

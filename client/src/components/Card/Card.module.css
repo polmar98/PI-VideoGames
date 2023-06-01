@@ -1,0 +1,57 @@
+.tarjeta {
+    display: inline-block;
+    width: 200px;
+    height: 370px;
+    background: linear-gradient(70deg, rgba(8, 8, 8, 0.7), rgba(209, 209, 205, 0.7));
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10%;
+    Box-shadow:  3px 6px 15px 4px  rgb(20, 9, 2);
+    outline: 2px solid rgb(29, 8, 104);
+}
+
+.containerTitulo {
+    background: linear-gradient(70deg, rgba(7, 2, 17, 0.7), rgba(141, 13, 247, 0.7));
+    width: 98%;
+    height: 63px;
+    border-radius: 15%;
+    outline: 1px solid rgb(218, 215, 206);
+}
+
+.Titulo {
+    color: white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-shadow: 3px 7px 9px #000;
+    height: 100%;
+    border-radius: 15%;
+    margin-bottom: 0px;
+    text-decoration: none;
+}
+.imagen {
+    width: 98%;
+    height: 160px;
+    border-radius: 10%;
+    margin-top: 10px;
+    outline: 1px solid rgb(218, 215, 206);
+}
+.containerDetalles {
+   width: 90%;
+   height: 100px; 
+}
+
+.detalleTitulo {
+    color: yellow;
+    font-size: 15px;
+    padding: 0px;
+    margin: 0px;
+}
+.detalles {
+    color:rgb(243, 242, 247);
+    font-size: 15px;
+    padding: 0px;
+    margin: 0px;
+}
+
+.tarjeta:hover {
+    outline: 2px solid rgb(242, 241, 245);
+}

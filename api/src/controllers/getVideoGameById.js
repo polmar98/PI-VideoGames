@@ -30,7 +30,8 @@ const getVideoGameById = async(req, res) => {
                image: element.background_image,
                platforms: element.platforms,
                date: element.released_at,
-               rating: element.rating
+               rating: element.rating,
+               genres: element.genres
          } 
         return res.status(200).json(juego);
       } else return res.status(404).json({message: "Id No encontrado"})
