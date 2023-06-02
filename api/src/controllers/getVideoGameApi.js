@@ -14,7 +14,8 @@ const getVideoGameApi = async(req, res) => {
            description: element.description,
            image: element.background_image,
            platforms: element.platforms.map(element => element),
-           date: element.released_at,
+           genres: element.genres.map(element => element),
+           released: element.released,
            rating: element.rating
         }
      })

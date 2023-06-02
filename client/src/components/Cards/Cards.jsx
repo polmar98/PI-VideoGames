@@ -10,7 +10,7 @@ export default function Cards({Videos}) {
                  id={prop.id}
                  name={prop.name}
                  image={prop.image}
-                 released_at={prop.released_at}
+                 released={prop.released}
                  genres={prop.genres}
               />
           )}

@@ -1,0 +1,86 @@
+.caja {
+    display: flex;
+    padding: 10px;
+    margin-left: 50px;
+}
+
+.subcaja {
+    display: flex;
+    height: 50%;
+}
+
+.division {
+    width: 50%;
+    padding: 5px;
+}
+
+.Tarjeta {
+    display: inline-block;
+    width: 600px;
+    height: 450px;
+    background: linear-gradient(70deg, rgba(8, 8, 8, 0.7), rgba(209, 209, 205, 0.7));
+    margin: 10px;
+    padding: 10px;
+    border-radius: 3%;
+    Box-shadow:  3px 6px 15px 4px  rgb(20, 9, 2);
+    outline: 2px solid rgb(29, 8, 104);
+}
+
+.imagen {
+    width: 450px;
+    height: 475px;
+    border-radius: 3%;
+    margin-top: 10px;
+    outline: 1px solid rgb(218, 215, 206);
+}
+
+.imagen:hover {
+    outline: 2px solid goldenrod;
+    transform: skew(10deg);
+}
+
+.Titulo {
+    font-size: 30px;
+    font-style: oblique;
+    color: white;
+    background: rgb(16, 4, 32);
+    text-shadow: 4px 3px 15px 4px  rgb(93, 135, 163);
+}
+
+.descripcion {
+    font-size: 14px;
+    padding: 4px;
+    color:rgb(7, 6, 2);
+    height: 45%;
+    overflow: auto;
+}
+
+.subtitulo {
+    font-size: 20px;
+    font-style: oblique;
+    color: white;
+    background: rgb(16, 4, 32);
+    text-shadow: 4px 3px 15px 4px  rgb(93, 135, 163);
+    margin-bottom: 0px;;
+}
+
+.detalles {
+    color: rgb(126, 248, 56);
+    margin: 0px;
+}
+
+.lineaFinal {
+    display: flex;
+    background: linear-gradient(70deg, rgba(8, 8, 8, 0.7), rgba(209, 209, 205, 0.7));
+    width: 450px;
+    height: 30px;
+    margin-left: 60px;
+    border-radius: 8px;
+ }
+.rating {
+    color:rgb(7, 6, 2);
+    margin-right: 20px;
+    margin-top: 0px;
+    padding-left: 10px;
+    padding-top: 0px;
+}

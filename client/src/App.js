@@ -6,6 +6,7 @@ import Home from './views/Home';
 import Landing from './views/Landing';
 import Form from './views/Form';
 import About from './views/About';
+import Details from './components/Details/Details';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/About" element={<About/>} />
           <Route path='/Landing' element={<Landing/>} />
           <Route path="/Form" element={<Form/>} />
+          <Route path="/Details/:id" element={<Details/>} />
        </Routes>
     </div>
   );

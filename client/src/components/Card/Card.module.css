@@ -4,13 +4,15 @@
     height: 370px;
     background: linear-gradient(70deg, rgba(8, 8, 8, 0.7), rgba(209, 209, 205, 0.7));
     margin: 10px;
-    padding: 10px;
+    padding: 15px;
     border-radius: 10%;
     Box-shadow:  3px 6px 15px 4px  rgb(20, 9, 2);
     outline: 2px solid rgb(29, 8, 104);
 }
 
 .containerTitulo {
+    margin: 0px;
+    padding: 0px;
     background: linear-gradient(70deg, rgba(7, 2, 17, 0.7), rgba(141, 13, 247, 0.7));
     width: 98%;
     height: 63px;

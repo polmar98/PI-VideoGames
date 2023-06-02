@@ -29,7 +29,7 @@ const getVideoGameById = async(req, res) => {
                description: element.description,
                image: element.background_image,
                platforms: element.platforms,
-               date: element.released_at,
+               released: element.released,
                rating: element.rating,
                genres: element.genres
          } 
