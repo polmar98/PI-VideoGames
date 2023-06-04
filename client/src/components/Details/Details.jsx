@@ -8,17 +8,29 @@ const url ='http://localhost:3001/videogames/';  //url del servidor local
 export default function Details() {
     const params = useParams();
     const [videos, setVideos] = useState({});
-    const [generos, setGeneros] = useState([]);
-    const [plataformas, setPlataformas] = useState([]);
+    const [generos, setGeneros] = useState('');
+    const [plataformas, setPlataformas] = useState('');
 
     useEffect(() => {
         fetch(`${url}${params.id}`)
         .then((response) => response.json())
         .then((video) => {
             if (video.name) {
-              setGeneros(video.genres); 
-              setPlataformas(video.platforms); 
               setVideos(video);
+              //Cargamos el array de generos en el Hook generos
+              let l = video.genres.length;
+              let listGenres = video.genres[0].name;
+              for(let i=1;i<l;i++){
+                 listGenres+= ', '+video.genres[i].name;
+              };
+              setGeneros(listGenres); 
+              //cargamos el array de platforms en el hook plataformas
+              l = video.platforms.length;
+              let listPlatforms = video.platforms[0].platform.name;
+              for(let j=1;j<l;j++){
+                listPlatforms+= ', '+video.platforms[j].platform.name;
+              };
+              setPlataformas(listPlatforms); 
             } else {
               window.alert("No hay videos con ese ID");
             }
@@ -39,18 +51,16 @@ export default function Details() {
              <div className={style.subcaja}>
                 <div className={style.division}>
                     <h3 className={style.subtitulo}>Genres</h3>
-                    {generos.map(ele => <h4 className={style.detalles}>{ele.name}</h4>)}
+                    <h4 className={style.detalles}>{generos}</h4>
                  </div>
                 <div className={style.division}>
                     <h3 className={style.subtitulo}>Platforms</h3>
-                    {plataformas.map(ele => <h4 className={style.detalles}>{ele.platform.name}</h4>)}
+                    <h4 className={style.detalles}>{plataformas}</h4>
                 </div>
              </div>
+             <h4 className={style.rating}>Rating: {videos.rating}</h4>
+             <h4 className={style.rating}>Released: {videos.released}</h4>
           </div>
-       </div>
-       <div className={style.lineaFinal}>
-            <h4 className={style.rating}>Rating: {videos.rating}</h4>
-            <h4 className={style.rating}>Released: {videos.released}</h4>
        </div>
     </div>
     )

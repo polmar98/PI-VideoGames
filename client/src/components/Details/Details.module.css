@@ -6,12 +6,17 @@
 
 .subcaja {
     display: flex;
-    height: 50%;
+    height: 30%;
+
 }
 
 .division {
-    width: 50%;
+    width: 45%;
     padding: 5px;
+    background: linear-gradient(70deg, rgba(8, 8, 8, 0.7), rgba(209, 209, 205, 0.7));
+    border-radius: 8px;
+    margin: 5px;
+    
 }
 
 .Tarjeta {
@@ -36,7 +41,7 @@
 
 .imagen:hover {
     outline: 2px solid goldenrod;
-    transform: skew(10deg);
+    transform: translate(10px,10px)  
 }
 
 .Titulo {
@@ -44,43 +49,37 @@
     font-style: oblique;
     color: white;
     background: rgb(16, 4, 32);
-    text-shadow: 4px 3px 15px 4px  rgb(93, 135, 163);
+    box-shadow: 4px 3px 15px 4px  rgb(234, 241, 247);
+    margin: opx;
+    border-radius: 8px;
 }
 
 .descripcion {
     font-size: 14px;
     padding: 4px;
-    color:rgb(7, 6, 2);
+    color: white;
     height: 45%;
     overflow: auto;
 }
 
 .subtitulo {
-    font-size: 20px;
+    font-size: 18px;
     font-style: oblique;
     color: white;
-    background: rgb(16, 4, 32);
     text-shadow: 4px 3px 15px 4px  rgb(93, 135, 163);
-    margin-bottom: 0px;;
+    margin: 0px;;
 }
 
 .detalles {
-    color: rgb(126, 248, 56);
+    color: rgb(241, 227, 17);
     margin: 0px;
+    font-size: 14px;
 }
 
-.lineaFinal {
-    display: flex;
-    background: linear-gradient(70deg, rgba(8, 8, 8, 0.7), rgba(209, 209, 205, 0.7));
-    width: 450px;
-    height: 30px;
-    margin-left: 60px;
-    border-radius: 8px;
- }
+
 .rating {
     color:rgb(7, 6, 2);
-    margin-right: 20px;
+    margin: 0px;
     margin-top: 0px;
-    padding-left: 10px;
     padding-top: 0px;
 }

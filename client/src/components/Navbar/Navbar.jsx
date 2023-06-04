@@ -12,7 +12,6 @@ export default function Navbar() {
                    <NavLink to="/Landing"><li className={style.itemsMenu}>Landing</li></NavLink>
                    <NavLink to="/About"><li className={style.itemsMenu}>About</li></NavLink>
                    <NavLink to="Form"><li className={style.itemsMenu}>Create/Game</li></NavLink>
-                   <NavLink to="/Landing"><li className={style.itemsMenu}>Logout</li></NavLink>
                </ul>
            </div>
            <div className={style.searchbarContainer}>

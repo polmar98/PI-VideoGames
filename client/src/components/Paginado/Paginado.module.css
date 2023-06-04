@@ -1,0 +1,19 @@
+.paginado {
+    display: flex;
+}
+
+.itemsPaginado {
+    margin-left: 5px;
+    padding: 2px;
+    color: white;
+    background-color: rgb(16, 4, 32);
+    width: 30px;
+    height: 100%;
+    border-radius: 15%;
+    outline: 1px solid rgb(243, 238, 238);
+    list-style: none;
+}
+
+.itemsPaginado:hover {
+    cursor: pointer;
+}

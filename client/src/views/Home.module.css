@@ -1,0 +1,30 @@
+.panel {
+    display: flex;
+    justify-content: center;
+}
+
+.paginado {
+    display: flex;
+    justify-content: center;
+}
+.gridContainer{
+   display: grid;
+   margin-top: 10px;
+   grid-template-rows: 20px 20px;
+   grid-template-columns: 120px 120px 120px 130px;
+   grid-row-gap: 0px;
+}
+
+.tituloSelector {
+   background-color: darkblue;
+   color: white;
+   font-size: 12px;
+   border: 1px solid white;
+   margin: 0px;
+   padding: 0px;
+}
+
+.selector {
+   font-size: 12px;
+
+}

@@ -1,10 +1,12 @@
 import Card from "../Card/Card";
+import style from "../Cards/Cards.module.css";
 
 export default function Cards({Videos}) {
 
    return (
       <div>
-          {Videos.map(prop => 
+         <div className={style.divTarjetas}>
+           {Videos.map(prop => 
               <Card 
                  key={prop.id}
                  id={prop.id}
@@ -12,8 +14,10 @@ export default function Cards({Videos}) {
                  image={prop.image}
                  released={prop.released}
                  genres={prop.genres}
+                 rating={prop.rating}
               />
           )}
+          </div>
       </div>
    )
 };

@@ -36,24 +36,30 @@
     margin-top: 10px;
     outline: 1px solid rgb(218, 215, 206);
 }
+.imagen:hover {
+    transform: scale(1.1);   
+}
 .containerDetalles {
-   width: 90%;
-   height: 100px; 
+   margin-top: 2px; 
+   width: 98%;
+   height: 30%; 
+   background-color: rgb(74, 75, 72);
 }
 
-.detalleTitulo {
-    color: yellow;
-    font-size: 15px;
-    padding: 0px;
-    margin: 0px;
-}
 .detalles {
+    height: 100%;
     color:rgb(243, 242, 247);
-    font-size: 15px;
+    font-size: 12px;
     padding: 0px;
     margin: 0px;
 }
 
 .tarjeta:hover {
     outline: 2px solid rgb(242, 241, 245);
+}
+
+.subtitulo {
+    color:rgb(209, 174, 16);
+    font-size: 13px;
+    margin: 0px;
 }
