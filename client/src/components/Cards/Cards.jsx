@@ -15,6 +15,7 @@ export default function Cards({Videos}) {
                  released={prop.released}
                  genres={prop.genres}
                  rating={prop.rating}
+                 platform={prop.platforms}
               />
           )}
           </div>

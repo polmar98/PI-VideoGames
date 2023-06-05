@@ -8,6 +8,7 @@ const {API_KEY} =  process.env;
 const getVideoGameByName = async(req, res) => {
    const {name} = req.query;
    const obj = req.query;
+ 
    if(obj.hasOwnProperty("name")) {
       //si la propiedad enviada por query es name hacemos la busqueda inicial en la API
       try {
@@ -17,10 +18,12 @@ const getVideoGameByName = async(req, res) => {
                id: element.id,
                name: element.name,
                description: element.description,
-               platforms: element.platforms.map(element => element),
                image: element.background_image,
-               date: element.released_at,
-               rating: element.rating
+               platforms: element.platforms,
+               genres: element.genres.map(element => element),
+               released: element.released,
+               rating: element.rating,
+               createdInDb: 'false'
             }
          })
          

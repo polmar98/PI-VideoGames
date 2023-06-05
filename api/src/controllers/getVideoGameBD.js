@@ -1,14 +1,20 @@
-const {Videogame, Genre} = require('../db');
+const {Videogame, Genre, Platform} = require('../db');
+
 //Este controller trae todos los registros de la base de datos. tabla: Videogame
 
 const getVideoGameBD = async(req, res) => {
    try {
       const listaJuegos = await Videogame.findAll({
-         include: {
+         include: [{
             model: Genre,
             attributes: ['name'],
             through: { attributes: [],},
-         }
+         },
+         {
+            model: Platform,
+            attributes: ['name'],
+            through: { attributes: [],},
+         }]
       });
       res.status(200).json(listaJuegos);
    } catch (error) {

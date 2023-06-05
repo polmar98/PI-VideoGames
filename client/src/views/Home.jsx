@@ -6,11 +6,13 @@ import { getVideos,
          filterVideosByGenre,
          filterVideosbyOrigen,
          orderByName,
-         orderByRating
+         orderByRating,
        } from "../Redux/actions";
 import Cards from "../components/Cards/Cards"
 import Paginado from "../components/Paginado/Paginado";
 import style from "../views/Home.module.css";
+import Navbar from "../components/Navbar/Navbar";
+import SearchBar from "../components/SearchBar/SearchBar";
 
 
 export default function Home(props) {
@@ -55,8 +57,10 @@ export default function Home(props) {
         dispatch(orderByRating(e.target.value));
     };
 
+
     return (
         <div>
+           <Navbar/>
            <button onClick={e => handleClick(e)}>Reset</button> 
            <div className={style.panel}>
            <div className={style.gridContainer}>
@@ -93,6 +97,7 @@ export default function Home(props) {
                   paginado={paginado}
               />
            </div>
+           <SearchBar/>
            <Cards Videos={currentVideos}/>
         </div>
     )

@@ -13,15 +13,18 @@
    grid-template-rows: 20px 20px;
    grid-template-columns: 120px 120px 120px 130px;
    grid-row-gap: 0px;
+   border: 2px solid rgb(39, 38, 38);
+   box-shadow: 4px 3px 15px 4px  rgb(55, 55, 56);
 }
 
 .tituloSelector {
-   background-color: darkblue;
+   background-color: rgb(2, 2, 77);
    color: white;
    font-size: 12px;
    border: 1px solid white;
    margin: 0px;
    padding: 0px;
+
 }
 
 .selector {

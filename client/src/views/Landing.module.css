@@ -1,0 +1,22 @@
+.imagen {
+    height: 450px;
+    width: 500px;
+    border-radius: 8px;
+    Box-shadow:  3px 6px 15px 4px  rgb(20, 9, 2);
+}
+
+.titulo {
+    color:rgb(109, 63, 7);
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 30px;
+    Box-shadow: 3px 7px 15px 4px rgb(125, 224, 12);
+    text-shadow: 3px 7px 9px #000;
+}
+
+.imagen:hover {
+    Box-shadow:  3px 6px 15px 4px  rgb(224, 224, 210);
+}
+
+.titulo:hover {
+    color:rgb(221, 226, 216);
+}

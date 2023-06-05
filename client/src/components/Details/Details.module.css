@@ -23,7 +23,7 @@
     display: inline-block;
     width: 600px;
     height: 450px;
-    background: linear-gradient(70deg, rgba(8, 8, 8, 0.7), rgba(209, 209, 205, 0.7));
+    background: linear-gradient(70deg, rgba(8, 8, 8, 0.9), rgba(209, 209, 205, 1));
     margin: 10px;
     padding: 10px;
     border-radius: 3%;
@@ -57,7 +57,7 @@
 .descripcion {
     font-size: 14px;
     padding: 4px;
-    color: white;
+    color: rgb(15, 13, 13);
     height: 45%;
     overflow: auto;
 }

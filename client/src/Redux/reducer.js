@@ -2,6 +2,7 @@ const initialState = {
    videoGames: [],
    GenresState: [],
    allVideos: [],
+   platformsState: [],
 };
 
 const reducer = (state = initialState, {type, payload}) => {
@@ -15,6 +16,8 @@ const reducer = (state = initialState, {type, payload}) => {
             return {...state, videoGames: filtrados};    
         case 'GET_GENRES':
             return {...state, GenresState: payload};  
+        case 'GET_PLATFORMS':
+            return {...state, platformsState: payload};    
         case 'FILTER_BY_ORIGEN':
             const copiaVideos1 = state.allVideos;
             const filtros = payload==='ALL' ? copiaVideos1 : copiaVideos1.filter(ele => ele.createdInDb===payload);
@@ -38,7 +41,9 @@ const reducer = (state = initialState, {type, payload}) => {
                    return payload === 'Des' ? 1 : -1
                } else return 0;
             }) 
-            return {...state, videoGames: orderVideosR};         
+            return {...state, videoGames: orderVideosR};   
+        case 'SEARCH_VIDEOS_BYNAME':
+            return {...state, videoGames: payload};          
         default:
             return {...state};           
     }
