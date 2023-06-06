@@ -1,4 +1,4 @@
-const {Videogame} = require("../db");
+const {Videogame, Genre, Platform} = require("../db");
 require('dotenv').config();
 const axios = require("axios");
 const URL = 'https://api.rawg.io/api/games';
@@ -19,17 +19,29 @@ const getVideoGameByName = async(req, res) => {
                name: element.name,
                description: element.description,
                image: element.background_image,
-               platforms: element.platforms,
-               genres: element.genres.map(element => element),
                released: element.released,
                rating: element.rating,
-               createdInDb: 'false'
+               createdInDb: 'false',
+               Genres: element.genres.map(element => element.name),
+               Platforms: element.platforms.map(ele => ele.platform.name),
             }
          })
          
          //ahora buscamos los registros de la base de datos que cumplan la condicion
-         const juegos2 = await Videogame.findAll();
-         const juegosBD = juegos2.filter(e => e.name.toLowerCase().includes(name.toLowerCase()))
+         const juegosDataBase = await Videogame.findAll({
+            include: [{
+               model: Genre,
+               attributes: ['name'],
+               through: { attributes: [],},
+            },
+            {
+               model: Platform,
+               attributes: ['name'],
+               through: { attributes: [],},
+            }]
+         });
+
+         const juegosBD = juegosDataBase.filter(e => e.name.toLowerCase().includes(name.toLowerCase()))
          const juegos = juegosApi.concat(juegosBD)
 
          if(!juegos.length) return res.status(404).json({message: "No hay coincidencias"});

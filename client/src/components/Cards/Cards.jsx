@@ -2,7 +2,6 @@ import Card from "../Card/Card";
 import style from "../Cards/Cards.module.css";
 
 export default function Cards({Videos}) {
-
    return (
       <div>
          <div className={style.divTarjetas}>
@@ -13,9 +12,10 @@ export default function Cards({Videos}) {
                  name={prop.name}
                  image={prop.image}
                  released={prop.released}
-                 genres={prop.genres}
+                 genres={prop.Genres}
                  rating={prop.rating}
-                 platform={prop.platforms}
+                 platforms={prop.Platforms}
+                 createdinDb={prop.createdInDb}
               />
           )}
           </div>

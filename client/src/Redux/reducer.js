@@ -43,7 +43,9 @@ const reducer = (state = initialState, {type, payload}) => {
             }) 
             return {...state, videoGames: orderVideosR};   
         case 'SEARCH_VIDEOS_BYNAME':
-            return {...state, videoGames: payload};          
+            return {...state, videoGames: payload};   
+        case 'CREATE_VIDEOS':
+            return {...state};           
         default:
             return {...state};           
     }

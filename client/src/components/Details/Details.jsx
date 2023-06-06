@@ -17,6 +17,7 @@ export default function Details() {
         .then((video) => {
             if (video.name) {
               setVideos(video);
+
               //Cargamos el array de generos en el Hook generos
               let l = video.genres.length;
               let listGenres = video.genres[0].name;
@@ -47,7 +48,9 @@ export default function Details() {
           <img className={style.imagen} src={videos.image} alt="" /> 
           <div className={style.Tarjeta}>
              <div className={style.Titulo}>{videos.name}</div>
-             <p className={style.descripcion}>{videos.description}</p>
+             <div className={style.descripcion}
+                 dangerouslySetInnerHTML={{__html: videos.description}}
+             />
              <div className={style.subcaja}>
                 <div className={style.division}>
                     <h3 className={style.subtitulo}>Genres</h3>
