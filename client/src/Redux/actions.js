@@ -73,11 +73,12 @@ export function orderByRating(tipoOrden) {
 }
 
 export function createVideo(newVideo) {
+
     return async(dispatch) => {
         var response = await axios.post(`${URL}videogames`, newVideo);
         return dispatch({
             type: 'CREATE_VIDEOS',
-            payload: response
+            payload: response.message
         })
     }
 }

@@ -19,18 +19,12 @@ export default function Details() {
               setVideos(video);
 
               //Cargamos el array de generos en el Hook generos
-              let l = video.genres.length;
-              let listGenres = video.genres[0].name;
-              for(let i=1;i<l;i++){
-                 listGenres+= ', '+video.genres[i].name;
-              };
+              let listGenres = video.Genres.join('-');
+
               setGeneros(listGenres); 
               //cargamos el array de platforms en el hook plataformas
-              l = video.platforms.length;
-              let listPlatforms = video.platforms[0].platform.name;
-              for(let j=1;j<l;j++){
-                listPlatforms+= ', '+video.platforms[j].platform.name;
-              };
+              let listPlatforms = video.Platforms.join('-');
+
               setPlataformas(listPlatforms); 
             } else {
               window.alert("No hay videos con ese ID");
@@ -63,6 +57,7 @@ export default function Details() {
              </div>
              <h4 className={style.rating}>Rating: {videos.rating}</h4>
              <h4 className={style.rating}>Released: {videos.released}</h4>
+             <h4 className={style.rating}>Id: {videos.id}</h4>
           </div>
        </div>
     </div>

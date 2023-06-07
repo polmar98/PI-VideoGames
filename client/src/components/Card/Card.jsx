@@ -3,17 +3,8 @@ import { Link } from "react-router-dom";
 import sinImagen from "../../img/Sin_datos.jpg";
 
 export default function Card({id,name,image,released,genres,rating,platforms,createdInDb}) {
-    let l = genres.length;
-    console.log(genres);
-    let listGenres = createdInDb ? genres[0].name : genres[0];
-    for(let i=1;i<l;i++){
-       listGenres+= createdInDb ? ', '+genres[i].name : genres[i];
-    };
-    l = platforms.length;
-    let listPlatforms = platforms[0];
-    for(let j=1;j<l;j++){
-      listPlatforms+= ', '+platforms[j];
-    };    
+  
+    let generos = genres.join('-');
     //validamos si hay imagen
     const imagen = image ? image : sinImagen;
     return (
@@ -28,9 +19,10 @@ export default function Card({id,name,image,released,genres,rating,platforms,cre
              </Link>  
              <h3 className={style.subtitulo}>Rating : {rating}</h3>  
              <div className={style.containerDetalles}>
-                <h5 className={style.detallesGenres}>Genres: {listGenres}</h5>
+                <h5 className={style.detallesGenres}>Genres : {generos}</h5>
               </div>
               <h3 className={style.subtitulo}>Released : {released}</h3>  
+              <h5 className={style.numeroId}>Id :{id}</h5>
         </div>    
     )
 };

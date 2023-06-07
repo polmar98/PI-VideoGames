@@ -39,7 +39,7 @@ export default function Form(props) {
     const submitHandler = (e) => {
        e.preventDefault();
        dispatch(createVideo(form));
-       window.alert("VideoGame Creado");
+         
        setForm({
          name: "",
          rating: "",
@@ -50,12 +50,13 @@ export default function Form(props) {
          image: "",
        });
        navigate('/');
+       
     };
 
     const handleChange = (event) => {
       const property = event.target.name;
       const value = event.target.value;
-      //setErrors(validation({...form, [property]: value}));
+      setErrors(validation({...form, [property]: value}));
       setForm({...form, [property]: value });
       //validate({...form, [property]: value}, errors, setErrors);
     };

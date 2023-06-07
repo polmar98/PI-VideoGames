@@ -79,8 +79,8 @@ export default function Home(props) {
               </select>
               <select onChange={e => handleFilterOrigen(e)} className={style.selector}>
                   <option value='All'>All</option>
-                  <option value='true'>Created</option>
-                  <option value='false'>Api</option>
+                  <option value='True'>Created</option>
+                  <option value='False'>Api</option>
               </select>
               <select onChange = {e => handleFilterGenre(e)} className={style.selector}>
                   <option value='ALL'>ALL</option>

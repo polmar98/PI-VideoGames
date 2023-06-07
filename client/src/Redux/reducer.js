@@ -12,7 +12,8 @@ const reducer = (state = initialState, {type, payload}) => {
             return {...state, videoGames: payload, allVideos: payload};  
         case 'FILTER_BY_GENRE':
             const copiaVideos = state.allVideos;
-            const filtrados = payload==='ALL' ? copiaVideos : copiaVideos.filter(ele => ele.genres.find(e => e.name===payload));
+            console.log(payload);
+            const filtrados = payload==='ALL' ? copiaVideos : copiaVideos.filter(ele => ele.Genres.find(e => e==payload));
             return {...state, videoGames: filtrados};    
         case 'GET_GENRES':
             return {...state, GenresState: payload};  
@@ -20,7 +21,10 @@ const reducer = (state = initialState, {type, payload}) => {
             return {...state, platformsState: payload};    
         case 'FILTER_BY_ORIGEN':
             const copiaVideos1 = state.allVideos;
-            const filtros = payload==='ALL' ? copiaVideos1 : copiaVideos1.filter(ele => ele.createdInDb===payload);
+            if(payload === "ALL") return {...state, videoGames: copiaVideos1};
+            const filtros = payload==="True" 
+               ? copiaVideos1.filter(ele => ele.createdInDb==true)
+               : copiaVideos1.filter(elex => elex.createdInDb==false)
             return {...state, videoGames: filtros};    
         case 'ORDER_BY_NAME':
             let orden = [...state.allVideos];
@@ -35,9 +39,9 @@ const reducer = (state = initialState, {type, payload}) => {
         case 'ORDER_BY_RATING':
             let ordenR = [...state.allVideos];
             let orderVideosR = ordenR.sort((a,b) => {
-               if(a.rating > b.rating) {
+               if(Number(a.rating) > Number(b.rating)) {
                    return payload === 'Asc' ? 1 : -1
-               } else if (a.rating < b.rating) {
+               } else if (Number(a.rating) < Number(b.rating)) {
                    return payload === 'Des' ? 1 : -1
                } else return 0;
             }) 
@@ -45,6 +49,7 @@ const reducer = (state = initialState, {type, payload}) => {
         case 'SEARCH_VIDEOS_BYNAME':
             return {...state, videoGames: payload};   
         case 'CREATE_VIDEOS':
+            window.alert(payload);
             return {...state};           
         default:
             return {...state};           

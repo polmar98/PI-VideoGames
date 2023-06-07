@@ -53,6 +53,9 @@
     margin: opx;
     border-radius: 8px;
 }
+.Titulo:hover {
+    background: rgb(32, 1, 1);
+}
 
 .descripcion {
     font-size: 14px;
@@ -71,7 +74,7 @@
 }
 
 .detalles {
-    color: rgb(241, 227, 17);
+    color: rgb(7, 7, 7);
     margin: 0px;
     font-size: 14px;
 }
