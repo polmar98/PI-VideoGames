@@ -1,4 +1,5 @@
 const validation =  function(data) {
+    /*
     let errors = {};
     if(!data.name){
         errors.n1 = 'Empty Name';
@@ -15,6 +16,7 @@ const validation =  function(data) {
     if(!data.image){
         errors.i1 = 'Empty Image';
     }
+    */
 };
 
 

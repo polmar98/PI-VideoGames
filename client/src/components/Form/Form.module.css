@@ -1,7 +1,7 @@
 .Tarjeta {
     background: linear-gradient(70deg, rgba(8, 8, 8, 0.7), rgba(209, 209, 205, 0.7));
     height: 470px;
-    width: 470px;
+    width: 500px;
     border-radius: 5%;
     margin: 10px;
 }
@@ -24,8 +24,8 @@
     display: grid;
     margin-top: 5px;
     margin-left: 10px;
-    grid-template-rows: 25px 25px 100px 25px 80px 80px 25px 25px;
-    grid-template-columns: 110px 340px ;
+    grid-template-rows: 25px 25px 100px 25px 25px 25px 25px 25px;
+    grid-template-columns: 100px 340px 40px ;
     grid-row-gap: 2px;
 }
 
@@ -37,9 +37,15 @@
     color: white;
 }
 
+.detaError {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 12px;
+    color: rgb(29, 1, 1);
+}
+
 .imagen {
-    height: 80%;
-    width: 80%;
+    height: 50%;
+    width: 50%;
     border-radius:5%;
 }
 
@@ -47,4 +53,23 @@
     border-radius: 10%;
     background-color: black;
     color: white;
+}
+
+.estado {
+   width: 25px;
+   height: 25px;
+}
+
+.divGenres {
+    background-color: cornflowerblue;
+}
+.itemGenres {
+    display: flex;
+}
+
+.genreItem {
+    font-size: 12px;
+}
+.botonX {
+    font-size: 12px;
 }

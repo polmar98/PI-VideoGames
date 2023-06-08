@@ -21,7 +21,8 @@ const addVideoGame = async(req, res) => {
 
      res.status(200).json({message: "VideoGame Created"}); 
    } catch (error) {
-     res.status(500).json({message: "Failed to created VideoGame"}); 
+     console.log(error.message);
+     res.status(500).json({message: error.message}); 
    }
 };
 
