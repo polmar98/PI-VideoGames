@@ -3,7 +3,7 @@ import style from './Form.module.css';
 import { getGenres, getPlatforms, createVideo } from "../../Redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
-import { UNSAFE_DataRouterContext, useNavigate } from "react-router-dom";
+import {useNavigate } from "react-router-dom";
 import sindatos from "../../img/Sin_datos.jpg";
 import fail from "../../img/fail.jpg";
 import good from "../../img/good.jpg";
@@ -101,14 +101,16 @@ export default function Form(props) {
           ...form,
           genres: [...form.genres, dato]
        });
-       console.log("Sel", form.genres);
+       console.log("Genr:", form.genres);
     };
 
-    const handleSelectorPlatforms = (e) => {
-      e.preventDefault();
-      setForm({...form, platforms: [...form.platforms, e.target.value]});
-      console.log("Platform",form.platforms);
-      setErrors(validate({...form, platforms: e.target.value}));
+    function handleSelectorPlatforms(e) {
+      const dato = e.target.value;
+      setForm({
+         ...form,
+         platforms: [...form.platforms, dato]
+      });
+      console.log("Platf:",form.platforms);
     };
 
     const handleChangeImage = (e) => {
@@ -159,7 +161,7 @@ export default function Form(props) {
                    <img src={errors.genres ? fail : good} alt="" className={style.estado}/>
 
                    <label className={style.etiqueta}>Platforms</label>
-                   <select name="platforms" onChange={handleSelectorPlatforms}>
+                   <select name="platforms" onChange={(e)=>handleSelectorPlatforms(e)}>
                       {Platforms.map(p =>
                          <option value={p.id}>{p.name}</option>  
                       )} 

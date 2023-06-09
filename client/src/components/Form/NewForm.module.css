@@ -1,0 +1,74 @@
+.principal {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+ }
+
+.Tarjeta {
+    background: linear-gradient(70deg, rgba(8, 8, 8, 0.7), rgba(209, 209, 205, 0.7));
+    height: 470px;
+    width: 500px;
+    border-radius: 5%;
+    margin: 10px;
+}
+.TarjetaB {
+    display: flex;
+    background: linear-gradient(70deg, rgba(8, 8, 8, 0.7), rgba(209, 209, 205, 0.7));
+    height: 470px;
+    width: 500px;
+    border-radius: 5%;
+    margin: 10px;
+}
+
+.gridContainer {
+    display: grid;
+    margin-top: 5px;
+    margin-left: 10px;
+    padding: 10px;
+    grid-template-rows: 25px 25px 100px 25px 25px 25px 25px 25px;
+    grid-template-columns: 100px 340px 40px ;
+    grid-row-gap: 2px;
+}
+
+.etiqueta {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 14px;
+    font-weight: 200;
+    background-color: rgba(8, 8, 8, 0.7);
+    color: white;
+}
+
+.estado {
+    width: 25px;
+    height: 25px;
+ }
+
+ .divGenres {
+    margin: 10px;
+    padding: 8px;
+    width: 24%;
+    height: 90%;
+    background-color: rgb(179, 181, 185);
+    border-radius: 8%;
+ }
+
+ .itemGenres {
+    display: flex;
+}
+
+.genreItem {
+    font-size: xx-small;
+}
+.botonX {
+    font-size: xx-small;
+    padding: 2px;
+    background-color: red;
+    margin-right: 2px;
+}
+
+.imagen {
+    height: 200px;
+    width: 200px;
+    border-radius:8%;
+    padding: 10px;
+}

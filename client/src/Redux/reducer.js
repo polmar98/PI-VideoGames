@@ -13,7 +13,7 @@ const reducer = (state = initialState, {type, payload}) => {
         case 'FILTER_BY_GENRE':
             const copiaVideos = state.allVideos;
             console.log(payload);
-            const filtrados = payload==='ALL' ? copiaVideos : copiaVideos.filter(ele => ele.Genres.find(e => e==payload));
+            const filtrados = payload==='ALL' ? copiaVideos : copiaVideos.filter(ele => ele.Genres.find(e => e===payload));
             return {...state, videoGames: filtrados};    
         case 'GET_GENRES':
             return {...state, GenresState: payload};  
@@ -23,7 +23,7 @@ const reducer = (state = initialState, {type, payload}) => {
             const copiaVideos1 = state.allVideos;
             if(payload === "ALL") return {...state, videoGames: copiaVideos1};
             const filtros = payload==="True" 
-               ? copiaVideos1.filter(ele => ele.createdInDb==true)
+               ? copiaVideos1.filter(ele => ele.createdInDb===true)
                : copiaVideos1.filter(elex => elex.createdInDb==false)
             return {...state, videoGames: filtros};    
         case 'ORDER_BY_NAME':
