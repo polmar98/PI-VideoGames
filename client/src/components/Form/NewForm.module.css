@@ -20,6 +20,11 @@
     margin: 10px;
 }
 
+.Titulo {
+    color: white;
+    font-size: 24px;
+}
+
 .gridContainer {
     display: grid;
     margin-top: 5px;
@@ -71,4 +76,18 @@
     width: 200px;
     border-radius:8%;
     padding: 10px;
+}
+
+.submitActivo {
+    background-color: black;
+    color: white;
+    border-radius: 5%;
+    padding: 5px;
+}
+
+.submitInactivo {
+    background-color: dimgrey;
+    color:rgba(39, 37, 37, 0.7);
+    border-radius: 5%;;
+    padding: 5px;
 }

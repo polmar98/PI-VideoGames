@@ -9,30 +9,40 @@ import sindatos from "../../img/Sin_datos.jpg";
 
 const validate = function (form) {
     let errors = {};
+    errors.submit ="";
     if(!form.name) {
        errors.name = "Name required";
+       errors.submit = "Error";
     } else if(!form.name.length>100) {
        errors.name = "name string cannot be longer than 100 characters";   
+       errors.submit = "Error";
     } else if(form.name.length<6) {
        errors.name = "name must have at least 6 characters";   
+       errors.submit = "Error";
     } else if(!form.rating) {
        errors.rating = "Rating required";
+       errors.submit = "Error";
     } else if(Number(form.rating)>5.00) {
        errors.rating = "rating cannot be greater than 5.00";
+       errors.submit = "Error";
     } else if(Number(form.rating)<0) {
-       errors.rating = "rating cannot be less than 0.00";   
+       errors.rating = "rating cannot be less than 0.00";  
+       errors.submit = "Error"; 
     } else if(!form.description) {
        errors.description = "Description required";
+       errors.submit = "Error";
     } else if(!form.released) {
        errors.released = "Released date required";
+       errors.submit = "Error";
     } else if(!form.genres.length) {
        errors.genres = "You must select at least one gender";
+       errors.submit = "Error";
     } else if(!form.platforms.length) {
        errors.platforms = "You must select at least one platform";
+       errors.submit = "Error";
     } else if(!form.image) {
        errors.image = "Image required";
-    } else if(!form.image.length>250) {
-       errors.image = "Url string cannot be longer than 250 characters";
+       errors.submit = "Error";
     }
  
     return errors;
@@ -53,7 +63,7 @@ export default function NewForm() {
     const Generos = useSelector((state) => state.GenresState);
     const Plataformas = useSelector((state) => state.platformsState);
     const [errors, setErrors] = useState({
-        name: "", rating: "", released: "", description: "", genres: "", platforms: "", image: ""});
+        name: "", rating: "", released: "", description: "", genres: "", platforms: "", image: "", submit: ""});
 
     useEffect(() => {
         dispatch(getGenres());
@@ -94,24 +104,64 @@ export default function NewForm() {
         setErrors(validate({...oform, image: e.target.value}));
      };
 
+     //esta funcion hace el llamado a la accion que creara el videogame
      const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(createVideo(oform));
+        const sel_genres = genaArrGenres();
+        const sel_platforms = genaArrPlatforms();
+  
+        //mapeamos la nueva estructura del json a enviar
+        const json = {
+              name: oform.name,
+              rating: oform.rating,
+              description: oform.description,
+              released: oform.released,
+              genres: sel_genres,
+              platforms: sel_platforms,
+              image: oform.image,
+        }
+
+        console.log(json);
+        dispatch(createVideo(json));
         window.alert("VideoGame Created");
      };
 
-     const handleDeleteGenre = (el) => {
-        //setOform({...oform, genres: oform.genres.filter(g => g !== el)});
+     //esta funcion elimina las Genres seleccionadas al dar click en el boton X
+     function handleDeleteGenre(el)  {
+        const dato =el.target.value;
+        setOform({...oform, genres: oform.genres.filter(g => g !== dato)});
      };
 
-     const handleDeletePlatform = (el) => {
-        //setOform({...oform, platforms: oform.platforms.filter(g => g !== el)});
+     //esta funcion elimina las plataformas seleccionadas al dar click en el boton X
+     function handleDeletePlatform(el) {
+        const dato =el.target.value;
+        setOform({...oform, platforms: oform.platforms.filter(g => g !== dato)});
      };
+
+    //esta funcion devuelve un array solo con los id de los generos seleccionados
+    const genaArrGenres = () => {
+        let arr = [];
+        oform.genres.forEach(g => {
+            let ele = Generos.find(x => x.name === g);
+            arr.push(ele.id);
+        });
+        return arr;
+    };
+
+    //esta funcion devuelve un array solo con los id de las plataformas seleccionadas
+     const genaArrPlatforms = () => {
+        let arr = [];
+        oform.platforms.forEach(g => {
+            let ele = Plataformas.find(x => x.name === g);
+            arr.push(ele.id);
+        });
+        return arr;
+    };   
 
     return (
         <div className={style.principal}>
             <div className={style.Tarjeta}>
-            <h2>Creacion de VideoGame</h2>    
+            <h2 className={style.Titulo}>VideoGame Creation</h2>    
             <form onSubmit={handleSubmit}>
                 <div className={style.gridContainer}>
                 <label className={style.etiqueta}>Name</label>
@@ -150,16 +200,24 @@ export default function NewForm() {
                 <img src={errors.image ? fail : good} alt="" className={style.estado}/>
 
                 <label className={style.etiqueta}>&nbsp;</label>
-                <button type="submit">Submit</button>
+                <button type="submit" 
+                        className={errors.submit ? style.submitInactivo :style.submitActivo}
+                        disabled={errors.submit ? true : false}
+                        >Submit
+                </button>
                 </div>
-            </form>
+                </form>
+                <p className={style.errorMessage}></p>
             </div>
+
             <div className={style.TarjetaB}>
                <div className={style.divGenres}>
                   <div className={style.etiqueta}>Genres</div>
                   {oform.genres.map(el =>
                      <div className={style.itemGenres}>
-                        <button className={style.botonX} onClick={handleDeleteGenre(el)}>X</button>
+                        <button className={style.botonX}
+                                value={el}
+                                onClick={(el)=>handleDeleteGenre(el)}>X</button>
                         <p className={style.genreItem}>{el}</p>
                      </div>
                   )}
@@ -168,7 +226,9 @@ export default function NewForm() {
                   <div className={style.etiqueta}>Platforms</div>
                   {oform.platforms.map(el =>
                      <div className={style.itemGenres}>
-                        <button className={style.botonX} onClick={handleDeletePlatform(el)}>X</button>
+                        <button className={style.botonX}
+                                value={el}
+                                onClick={(el)=>handleDeletePlatform(el)}>X</button>
                         <p className={style.genreItem}>{el}</p>
                      </div>
                   )}

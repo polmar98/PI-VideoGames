@@ -5,7 +5,7 @@ import Navbar from './components/Navbar/Navbar';
 import Home from './views/Home';
 import Landing from './views/Landing';
 import NewForm from './components/Form/NewForm';
-import About from './views/About';
+import About from './components/About/About';
 import Details from './components/Details/Details';
 
 function App() {
@@ -14,7 +14,7 @@ function App() {
 
   return (
     <div className="App">
-          {(location.pathname !== '/home') && (
+          {(location.pathname !== '/home' && location.pathname !== '/') && (
              <Navbar onSearch={onSearch} />
           )}
 

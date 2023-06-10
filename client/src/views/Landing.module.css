@@ -1,16 +1,19 @@
 .imagen {
-    height: 450px;
-    width: 500px;
+
+    height: 430px;
+    width: 470px;
     border-radius: 8px;
     Box-shadow:  3px 6px 15px 4px  rgb(20, 9, 2);
 }
 
 .titulo {
+    margin-top: 50px;
     color:rgb(109, 63, 7);
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 30px;
     Box-shadow: 3px 7px 15px 4px rgb(125, 224, 12);
     text-shadow: 3px 7px 9px #000;
+    width: 470px;
 }
 
 .imagen:hover {
@@ -19,4 +22,25 @@
 
 .titulo:hover {
     color:rgb(221, 226, 216);
+}
+
+.panel {
+    display: flex;
+    justify-content: center;
+}
+.boton {
+    font-size: 16px;
+    color: white;
+    background-color: black;
+    width: 10%;
+    height: 24px;
+    border-radius: 15%;
+    Box-shadow: 3px 7px 15px 4px rgb(32, 32, 34);
+    margin-top: 10px;
+}
+
+.boton:hover {
+    cursor: pointer;
+    background-color: azure;
+    color:black;
 }
