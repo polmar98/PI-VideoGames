@@ -3,6 +3,17 @@
     justify-content: center;
 }
 
+.reset {
+   background-color: darkgrey;
+   color:rgb(39, 38, 38);
+}
+
+.reset:hover {
+   cursor: pointer;
+   background-color: lightblue;
+   color: black;
+}
+
 .paginado {
     display: flex;
     justify-content: center;

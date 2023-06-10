@@ -16,4 +16,5 @@
 
 .itemsPaginado:hover {
     cursor: pointer;
+    background-color: blue;
 }

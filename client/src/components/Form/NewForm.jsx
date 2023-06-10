@@ -2,6 +2,7 @@ import React from "react";
 import { getGenres, getPlatforms, createVideo } from "../../Redux/actions";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import style from './NewForm.module.css';
 import fail from "../../img/fail.jpg";
 import good from "../../img/good.jpg";
@@ -16,8 +17,8 @@ const validate = function (form) {
     } else if(!form.name.length>100) {
        errors.name = "name string cannot be longer than 100 characters";   
        errors.submit = "Error";
-    } else if(form.name.length<6) {
-       errors.name = "name must have at least 6 characters";   
+    } else if(form.name.length<5) {
+       errors.name = "name must have at least 5 characters";   
        errors.submit = "Error";
     } else if(!form.rating) {
        errors.rating = "Rating required";
@@ -51,6 +52,7 @@ const validate = function (form) {
 
 export default function NewForm() {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const [oform, setOform] = useState({
         name: "",
         rating: "",
@@ -79,7 +81,11 @@ export default function NewForm() {
         setErrors(validate({...oform, [property]: value}));
     };
 
+    //esta funcion agrega la seleccion de un genero al estado local oform.genres
     const handleSelectorGenres =(e) =>{
+        //buscamos primero si ya existe
+        const buscado = oform.genres.find(ele=>ele===e.target.value);
+        if(buscado) return;
         setOform({
            ...oform,
            genres: [...oform.genres, e.target.value]
@@ -87,8 +93,12 @@ export default function NewForm() {
         setErrors(validate({...oform, genres: [...oform.genres, e.target.value]}));
      };
  
+     //esta funcion agrega la seleccion de una plataforma al estado local oform.platforms
      function handleSelectorPlatforms(e) {
        const dato = e.target.value;
+       //buscamos primero si ya existe
+       const buscado = oform.platforms.find(ele=>ele===dato);
+       if(buscado) return;
        setOform({
           ...oform,
           platforms: [...oform.platforms, dato]
@@ -121,9 +131,8 @@ export default function NewForm() {
               image: oform.image,
         }
 
-        console.log(json);
         dispatch(createVideo(json));
-        window.alert("VideoGame Created");
+        navigate('/home');
      };
 
      //esta funcion elimina las Genres seleccionadas al dar click en el boton X
@@ -207,7 +216,17 @@ export default function NewForm() {
                 </button>
                 </div>
                 </form>
-                <p className={style.errorMessage}></p>
+                <p className={style.errorMessage}>
+                   { errors.name ? errors.name :
+                     errors.rating ? errors.rating :
+                     errors.description ? errors.description :
+                     errors.released ? errors.released :
+                     errors.genres ? errors.genres :
+                     errors.platforms ? errors.platforms :
+                     errors.image ? errors.image :
+                     <h4>&nbsp;</h4>
+                   }
+                </p>
             </div>
 
             <div className={style.TarjetaB}>

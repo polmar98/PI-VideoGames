@@ -10,6 +10,7 @@
     width: 500px;
     border-radius: 5%;
     margin: 10px;
+    border: 1px solid grey;
 }
 .TarjetaB {
     display: flex;
@@ -18,6 +19,7 @@
     width: 500px;
     border-radius: 5%;
     margin: 10px;
+    border: 1px solid grey;
 }
 
 .Titulo {

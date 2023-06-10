@@ -29,10 +29,13 @@ const getVideoGames = async(req, res) => {
       });
       const juegosDb = mapListGames(listaJuegos);
 
-      //ahora traigo los registros de la Api
-      const juegos = await axios.get(`${URL}?page=1&page_size=40&key=${API_KEY}`);
-      const juegosApi = juegos.data.results; 
-      
+      //ahora traigo los registros de la Api, 2 veces a las paginas 1 y 2
+      const juegos1 = await axios.get(`${URL}?page=1&page_size=40&key=${API_KEY}`);
+      const juegos2 = await axios.get(`${URL}?page=2&page_size=40&key=${API_KEY}`);
+      const juegosApi1 = juegos1.data.results; 
+      const juegosApi2 = juegos2.data.results; 
+      const juegosApi = juegosApi1.concat(juegosApi2);
+
       //mapeamos los registros que vienen de la Api
       const gamesApi = await juegosApi.map(element => {
          return {

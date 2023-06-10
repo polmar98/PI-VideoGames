@@ -61,7 +61,7 @@ export default function Home(props) {
     return (
         <div>
            <Navbar/>
-           <button onClick={e => handleClick(e)}>Reset</button> 
+           <button className={style.reset} onClick={e => handleClick(e)}>Reset</button> 
            <div className={style.panel}>
            <div className={style.gridContainer}>
                <h3 className={style.tituloSelector}>Order by Name</h3>
