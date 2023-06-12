@@ -93,3 +93,59 @@
     border-radius: 5%;;
     padding: 5px;
 }
+
+.panelErrors {
+    display: flex;
+    justify-content: center;
+}
+
+.errorMessage {
+    width: 90%;
+    font-size: 14px;
+    color: red;
+    font-weight: 500;
+    background-color: black;
+    border-radius: 5px;
+    outline: 1px solid white;
+}
+
+.errorVacio {
+    font-size: 14px;
+}
+
+@media (max-width: 900px) {
+   .principal {
+      display: inline-block;
+   }
+   .Tarjeta {
+       height: 450px;
+       width: 410px;
+   }
+   .gridContainer {
+      grid-template-rows: 25px 25px 100px 25px 25px 25px 25px 25px;
+      grid-template-columns: 80px 280px 25px ;
+   }
+   .etiqueta {
+      font-size: 12px;
+   }
+   .estado {
+       width: 20px;
+       height: 20px;
+   }
+   .TarjetaB {
+       height: 450px;
+       width: 410px;   
+       margin: 5px; 
+   }
+   .genreItem {
+      font-size: 8px;
+   }
+   .imagen {
+      height: 180px;
+      width: 180px;   
+   }
+   .divGenres {
+      margin: 3px;
+      padding: 2px;
+   }
+}

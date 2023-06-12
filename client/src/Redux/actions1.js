@@ -1,7 +1,7 @@
 import axios from 'axios';
 const URL = 'http://localhost:3001/';
 
-export function getVideos() {
+const getVideos = () => {
     return async(dispatch) => {
         var json = await axios.get(URL);
         return dispatch({
@@ -11,7 +11,7 @@ export function getVideos() {
     }
 };
 
-export function searchVideosByName(searchName) {
+const searchVideosByName = (searchName)=>{
     return async(dispatch) => {
         try {
             var json = await axios.get(`${URL}videogames?name=${searchName}`);
@@ -25,21 +25,21 @@ export function searchVideosByName(searchName) {
     }
 };
 
-export  function filterVideosByGenre(genero) {
+const filterVideosByGenre = (genero) => {
    return {
      type: 'FILTER_BY_GENRE',
      payload: genero
    }
 };
 
-export function filterVideosbyOrigen(origen) {
+const filterVideosbyOrigen = (origen) => {
     return {
         type: 'FILTER_BY_ORIGEN',
         payload: origen
     }
 };
 
-export function getGenres() {
+const getGenres =() => {
     return async(dispatch) => {
         var json = await axios.get(`${URL}genres`);
         return dispatch({
@@ -49,7 +49,7 @@ export function getGenres() {
     }    
 };
 
-export function getPlatforms() {
+const getPlatforms =() =>{
     return async(dispatch) => {
         var json = await axios.get(`${URL}platforms`);
         return dispatch({
@@ -59,21 +59,21 @@ export function getPlatforms() {
     }
 };
 
-export function orderByName(tipoOrden) {
+const orderByName = (tipoOrden) => {
     return {
         type: 'ORDER_BY_NAME',
         payload: tipoOrden
     }
 };
 
-export function orderByRating(tipoOrden) {
+const orderByRating = (tipoOrden) => {
     return {
         type: 'ORDER_BY_RATING',
         payload: tipoOrden
     }
 };
 
-export function createVideo(newVideo) {
+const createVideo = (newVideo) => {
 
     return async(dispatch) => {
         const response = await axios.post(`${URL}videogames`, newVideo);
@@ -84,3 +84,16 @@ export function createVideo(newVideo) {
         })
     }
 };
+
+module.exports = 
+    getVideos,
+    getGenres,
+    getPlatforms,
+    createVideo,
+    orderByRating,
+    orderByName,
+    filterVideosbyOrigen,
+    filterVideosByGenre,
+    searchVideosByName,
+    createVideo,
+;

@@ -42,3 +42,9 @@
    font-size: 12px;
 
 }
+
+@media (max-width: 640px) {
+   .gridContainer {
+      grid-template-columns: 100px 100px 100px 110px;
+   }
+}

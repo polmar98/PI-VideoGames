@@ -65,7 +65,7 @@ export default function NewForm() {
     const Generos = useSelector((state) => state.GenresState);
     const Plataformas = useSelector((state) => state.platformsState);
     const [errors, setErrors] = useState({
-        name: "", rating: "", released: "", description: "", genres: "", platforms: "", image: "", submit: ""});
+        name: "Name is required", rating: "", released: "", description: "", genres: "", platforms: "", image: "", submit: "Error"});
 
     useEffect(() => {
         dispatch(getGenres());
@@ -139,12 +139,14 @@ export default function NewForm() {
      function handleDeleteGenre(el)  {
         const dato =el.target.value;
         setOform({...oform, genres: oform.genres.filter(g => g !== dato)});
+        setErrors(validate({...oform, genres: oform.genres.filter(g => g !== dato)}));
      };
 
      //esta funcion elimina las plataformas seleccionadas al dar click en el boton X
      function handleDeletePlatform(el) {
         const dato =el.target.value;
         setOform({...oform, platforms: oform.platforms.filter(g => g !== dato)});
+        setErrors(validate({...oform, platforms: oform.platforms.filter(g => g !== dato)}));
      };
 
     //esta funcion devuelve un array solo con los id de los generos seleccionados
@@ -216,17 +218,19 @@ export default function NewForm() {
                 </button>
                 </div>
                 </form>
-                <p className={style.errorMessage}>
-                   { errors.name ? errors.name :
-                     errors.rating ? errors.rating :
-                     errors.description ? errors.description :
-                     errors.released ? errors.released :
-                     errors.genres ? errors.genres :
-                     errors.platforms ? errors.platforms :
-                     errors.image ? errors.image :
-                     <h4>&nbsp;</h4>
-                   }
-                </p>
+                <div className={style.panelErrors}>
+                   <p className={errors.submit ? style.errorMessage : style.errorVacio}>
+                      { errors.name ? errors.name :
+                        errors.rating ? errors.rating :
+                        errors.description ? errors.description :
+                        errors.released ? errors.released :
+                        errors.genres ? errors.genres :
+                        errors.platforms ? errors.platforms :
+                        errors.image ? errors.image :
+                        <h4>&nbsp;</h4>
+                      }
+                   </p>
+                </div>
             </div>
 
             <div className={style.TarjetaB}>

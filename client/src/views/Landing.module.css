@@ -44,3 +44,10 @@
     background-color: azure;
     color:black;
 }
+
+@media (max-width: 640px) {
+    .imagen {
+        height: 400px;
+        width: 420px;
+    }
+}

@@ -67,3 +67,37 @@
     color: rgb(245, 241, 10);
     list-style: none;
 }
+
+.description {
+    padding: 2px;
+    height: 100%;
+    overflow: auto;
+}
+
+.Lista {
+   margin-top: 0px;
+}
+
+@media (max-width: 660px) {
+    .Tarjeta {
+        height: 420px;
+        width: 450px; 
+    }
+    .gridContainer {
+        grid-template-rows: 30px 20px 110px 110px 110px;
+        grid-template-columns: 150px 150px 100px;
+        grid-column-gap: 3px;
+    }
+    .caja {
+        padding: 1px;
+    }
+    .logoHenry {
+        widht: 60px;
+    }
+    .description {
+        font-size: 11px;
+    }
+    .itemLista {
+        font-size: 12px;
+    }
+}

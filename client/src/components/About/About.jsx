@@ -18,13 +18,17 @@ export default function About() {
                       <img src={soyHenry} alt="" className={style.logoHenry}/>
                    </div>
                    <div className={style.caja}>
-                   Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ut animi laborum, corporis libero provident in dolorum nostrum, quasi asperiores blanditiis dicta enim quidem tempora quae architecto, illo ducimus perspiciatis labore.
-                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum recusandae omnis veritatis aliquid autem quod ipsa doloremque asperiores? Natus facilis perspiciatis eos harum non tempora, ad cupiditate iusto voluptatum eligendi.
-                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque ut illum reprehenderit velit officiis delectus dicta animi quaerat quidem molestias sequi laboriosam facilis illo recusandae quis, modi laudantium vero aperiam!
+                       <div className={style.description}>
+                           Systems Professional. Work experience as a maintenance technician, computer repair, support, installation and administration of networks and as a software analyst and developer.
+                           Trained in the Technical field for the development of the profession in general, with a high degree of professionalism and excellent ability to analyze equipment diagnoses, fault detection, solution proposals and repair thereof.
+                           With excellent experience in the installation, configuration and maintenance of Novell Netware networks, Windows Server, Workgroups, NT Server and Wireless networks. Practical ability in handling structured cabling.
+                           Trained in the field of Software with extensive skills for the analysis and development of applications for data management, with high knowledge of accounting, Payroll, Banks, Billing, Inventories, Portfolio and Customer management, Portfolio and Supplier management, Property Management Horizontal, Hotel management, Financial credits and other fields.
+                           Trained to develop web applications with skillful management of tools such as node-js, express, react, php, laravel, ajax, jquery and excellent management and administration of databases in mysql, sql, postgress.
+                       </div>
                    </div>
                    <div className={style.caja}>
-                     <ul>
-                        <li className={style.itemLista}>Node-Js</li>
+                     <ul className={style.Lista}>
+                        <li className={style.itemLista}>Node-Js - Express</li>
                         <li className={style.itemLista}>React</li>
                         <li className={style.itemLista}>Php-Laravel-Ajax</li>
                         <li className={style.itemLista}>C#</li>
@@ -33,7 +37,7 @@ export default function About() {
                      </ul>
                    </div>
                    <div className={style.caja}>
-                      <ul>
+                      <ul className={style.Lista}>
                         <li className={style.itemLista}>Postgress</li>
                         <li className={style.itemLista}>Mysql</li>
                         <li className={style.itemLista}>Sql</li>

@@ -57,3 +57,23 @@
     outline: 2px solid rgb(68, 6, 9);
 }
 
+@media (max-width: 640px) {
+    .Menu {
+        display:inline-block;
+    }
+    .Barra {
+        display: inline-block;
+        height: 180px;
+    }
+    .divMenu {
+        margin-top: 5px;
+        height: 20px;
+    }
+    .itemsMenu {
+        height: 20px;
+    }
+    .titulo {
+        padding: 0px;
+        margin-top: 1px;
+    }
+}
