@@ -21,13 +21,13 @@ const reducer = (state = initialState, {type, payload}) => {
             return {...state, platformsState: payload};    
         case 'FILTER_BY_ORIGEN':
             const copiaVideos1 = state.allVideos;
-            if(payload === "ALL") return {...state, videoGames: copiaVideos1};
+            if(payload === "All") return {...state, videoGames: state.allVideos};
             const filtros = payload==="True" 
                ? copiaVideos1.filter(ele => ele.createdInDb===true)
                : copiaVideos1.filter(elex => elex.createdInDb==false)
             return {...state, videoGames: filtros};    
         case 'ORDER_BY_NAME':
-            let orden = [...state.allVideos];
+            let orden = [...state.videoGames];
             let orderVideos = orden.sort((a,b) => {
                 if(a.name > b.name) {
                     return payload === 'Asc' ? 1 : -1
@@ -37,7 +37,7 @@ const reducer = (state = initialState, {type, payload}) => {
             }) 
             return {...state, videoGames: orderVideos};     
         case 'ORDER_BY_RATING':
-            let ordenR = [...state.allVideos];
+            let ordenR = [...state.videoGames];
             let orderVideosR = ordenR.sort((a,b) => {
                if(Number(a.rating) > Number(b.rating)) {
                    return payload === 'Asc' ? 1 : -1
