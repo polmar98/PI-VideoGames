@@ -138,6 +138,7 @@ export default function NewForm() {
      //esta funcion elimina las Genres seleccionadas al dar click en el boton X
      function handleDeleteGenre(el)  {
         const dato =el.target.value;
+        console.log(dato);
         setOform({...oform, genres: oform.genres.filter(g => g !== dato)});
         setErrors(validate({...oform, genres: oform.genres.filter(g => g !== dato)}));
      };

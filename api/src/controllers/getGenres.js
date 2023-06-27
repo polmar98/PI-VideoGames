@@ -11,9 +11,8 @@ const getGenres = async(req, res) => {
     try {
         const generos = await axios.get(`${URL}?key=${API_KEY}`);
         const datos = generos.data.results;
-        //let registro = {};
+ 
         datos.forEach(element => { 
-            //registro = {name: element.name};
             Genre.findOrCreate({where: {name: element.name}});
         });
         const newGeneros = await Genre.findAll()
@@ -22,14 +21,7 @@ const getGenres = async(req, res) => {
         res.status(500).json({message: error.message});  
     }
 
-   /*
-    try {
-        const newGeneros = await Genre.findAll();
-        res.status(200).json(newGeneros);
-    } catch (error) {
-        res.status(500).json({message: error.message});  
-    }
-    */
+
 };
 
 module.exports = {getGenres};

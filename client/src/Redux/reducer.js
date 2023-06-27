@@ -3,31 +3,54 @@ const initialState = {
    GenresState: [],
    allVideos: [],
    platformsState: [],
+   filtroGenre: "All",
+   filtroOrigen: "All",
 };
 
 const reducer = (state = initialState, {type, payload}) => {
 
     switch (type) {
         case 'GET_VIDEOS':
-            return {...state, videoGames: payload, allVideos: payload};  
+            return {...state, 
+                   videoGames: payload, 
+                   allVideos: payload,
+                   filtroGenre: "All",
+                   filtroOrigen: "All",
+            };  
         case 'FILTER_BY_GENRE':
-            const copiaVideos = state.allVideos;
-            console.log(payload);
-            const filtrados = payload==='ALL' ? copiaVideos : copiaVideos.filter(ele => ele.Genres.find(e => e===payload));
-            return {...state, videoGames: filtrados};    
+            console.log("Origen:",state.filtroOrigen);
+            let copiaVideos = state.allVideos;
+            if(state.filtroOrigen === "True") {
+                copiaVideos = state.allVideos.filter(ele => ele.createdInDb===true);
+            };    
+            if(state.filtroOrigen === "False") {
+                copiaVideos = state.allVideos.filter(ele => ele.createdInDb===false);
+            };    
+            const filtrados = payload==='All' 
+                  ? copiaVideos 
+                  : copiaVideos.filter(ele => ele.Genres.find(e => e===payload));
+            return {...state, videoGames: filtrados, filtroGenre: payload};    
         case 'GET_GENRES':
             return {...state, GenresState: payload};  
         case 'GET_PLATFORMS':
             return {...state, platformsState: payload};    
         case 'FILTER_BY_ORIGEN':
-            const copiaVideos1 = state.allVideos;
-            if(payload === "All") return {...state, videoGames: state.allVideos};
+            let copiaVideos1 = state.allVideos;
+            if(state.filtroGenre !== "All") {
+                copiaVideos1 = copiaVideos1.filter(ele => ele.Genres.find(e => e===state.filtroGenre));
+            };
+            if(payload === "All") {
+                return {...state, videoGames: copiaVideos1, filtroOrigen: payload};
+            };    
             const filtros = payload==="True" 
                ? copiaVideos1.filter(ele => ele.createdInDb===true)
-               : copiaVideos1.filter(elex => elex.createdInDb==false)
-            return {...state, videoGames: filtros};    
+               : copiaVideos1.filter(elex => elex.createdInDb===false)
+            return {...state, videoGames: filtros, filtroOrigen: payload};    
         case 'ORDER_BY_NAME':
             let orden = [...state.videoGames];
+            if(payload === "xxx") {
+                return {...state};
+            }
             let orderVideos = orden.sort((a,b) => {
                 if(a.name > b.name) {
                     return payload === 'Asc' ? 1 : -1
@@ -38,6 +61,9 @@ const reducer = (state = initialState, {type, payload}) => {
             return {...state, videoGames: orderVideos};     
         case 'ORDER_BY_RATING':
             let ordenR = [...state.videoGames];
+            if(payload === "xxx") {
+                return {...state};
+            }
             let orderVideosR = ordenR.sort((a,b) => {
                if(Number(a.rating) > Number(b.rating)) {
                    return payload === 'Asc' ? 1 : -1
