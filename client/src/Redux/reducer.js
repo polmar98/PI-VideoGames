@@ -5,6 +5,8 @@ const initialState = {
    platformsState: [],
    filtroGenre: "All",
    filtroOrigen: "All",
+   retorno: false,
+   paginaActual: 1,
 };
 
 const reducer = (state = initialState, {type, payload}) => {
@@ -76,7 +78,11 @@ const reducer = (state = initialState, {type, payload}) => {
             return {...state, videoGames: payload};   
         case 'CREATE_VIDEOS':
             window.alert(payload);
-            return {...state};           
+            return {...state};    
+        case 'RETURN_VIDEOS':
+            return {...state, retorno: payload};      
+        case 'CAMBIAR_PAGINA':
+            return {...state, paginaActual: payload} ;        
         default:
             return {...state};           
     }

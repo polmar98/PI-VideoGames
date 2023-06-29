@@ -1,5 +1,5 @@
 import React from "react";
-import { getGenres, getPlatforms, createVideo } from "../../Redux/actions";
+import { getGenres, getPlatforms, createVideo, getVideos } from "../../Redux/actions";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -55,7 +55,7 @@ export default function NewForm() {
     const navigate = useNavigate();
     const [oform, setOform] = useState({
         name: "",
-        rating: "",
+        rating: "2.50",
         description: "",
         released: "",
         genres: [],
@@ -77,6 +77,10 @@ export default function NewForm() {
         e.preventDefault();
         const property = e.target.name;
         const value = e.target.value;
+        if(property == "rating"){
+            const spa = document.getElementById('span1');
+            spa.innerHTML = "Value: "+value;
+        }
         setOform({...oform, [property]: value });
         setErrors(validate({...oform, [property]: value}));
     };
@@ -181,7 +185,18 @@ export default function NewForm() {
                 <img src={errors.name ? fail : good} alt="" className={style.estado}/>
 
                 <label className={style.etiqueta}>Rating</label>
-                <input type="number" name="rating" onChange={(e)=>handleChange(e)} value={oform.rating}/> 
+                <div className={style.divSlider}>
+                   <input type="range"
+                          id="slider1"
+                          className={style.slider}
+                          name="rating" 
+                          min="0"
+                          max="5"
+                          step="0.01"
+                          onChange={(e)=>handleChange(e)} 
+                          value={oform.rating}/> 
+                   <span className={style.span} id="span1">Value: 2.50</span>       
+                </div>       
                 <img src={errors.rating ? fail : good} alt="" className={style.estado}/>
 
                 <label className={style.etiqueta}>Description</label>

@@ -1,14 +1,21 @@
 import axios from 'axios';
+import { useSelector } from 'react-redux';
 const URL = 'http://localhost:3001/';
 
-export function getVideos() {
+export function getVideos(retorno) {
     return async(dispatch) => {
-        var json = await axios.get(URL);
-        return dispatch({
-            type: 'GET_VIDEOS',
-            payload: json.data
-        })
-    }
+        if(!retorno){
+            var json = await axios.get(URL);
+            return dispatch({
+                type: 'GET_VIDEOS',
+                payload: json.data
+            })
+        } else {
+            return {
+                type: 'RETURN_VIDEOS',
+            }
+        };
+     }
 };
 
 export function searchVideosByName(searchName) {
@@ -84,3 +91,17 @@ export function createVideo(newVideo) {
         })
     }
 };
+
+export function regresar(retorno) {
+    return {
+        type: 'RETURN_VIDEOS',
+        payload: retorno
+    }    
+};
+
+export function cambiarPagina(numero) {
+    return {
+        type: 'CAMBIAR_PAGINA',
+        payload: numero
+    }        
+}

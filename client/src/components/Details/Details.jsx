@@ -1,6 +1,7 @@
-import { useParams } from "react-router-dom";
-import { useEffect } from "react";
-import { useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { regresar } from "../../Redux/actions";
 import style from "../Details/Details.module.css";
 const url ='http://localhost:3001/videogames/';  //url del servidor local
 
@@ -10,6 +11,8 @@ export default function Details() {
     const [videos, setVideos] = useState({});
     const [generos, setGeneros] = useState('');
     const [plataformas, setPlataformas] = useState('');
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     useEffect(() => {
         fetch(`${url}${params.id}`)
@@ -36,6 +39,11 @@ export default function Details() {
         return setVideos({});
     }, [params.id]);
 
+    const handleRetornar = () => {
+       dispatch(regresar(true));  
+       navigate('/home');
+    };
+
     return (
     <div>
        <div className={style.caja}>
@@ -60,6 +68,10 @@ export default function Details() {
              <h4 className={style.rating}>Id: {videos.id}</h4>
           </div>
        </div>
+       <div className={style.Principal}>
+           <h2 className={style.Retornar} onClick={handleRetornar}>Go Back</h2>
+       </div>
+
     </div>
     )
  };

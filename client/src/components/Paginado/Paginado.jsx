@@ -1,7 +1,7 @@
 import React from "react";
 import style from "../Paginado/Paginado.module.css";
 
-export default function Paginado({videosPerPage, lenVideos, paginado}) {
+export default function Paginado({videosPerPage, lenVideos, paginado, actualPage}) {
     const pageNumbers = [];
     for(let i=0; i<Math.ceil(lenVideos/videosPerPage); i++) {
         pageNumbers.push(i+1);
@@ -12,7 +12,8 @@ export default function Paginado({videosPerPage, lenVideos, paginado}) {
             <ul className={style.paginado}>
                 {pageNumbers && 
                    pageNumbers.map(number => (
-                      <li className={style.itemsPaginado} key={number}>
+                      <li className={number===actualPage ? style.itemsPaginadoSelected : style.itemsPaginado}
+                          key={number}>
                          <a onClick={()=>paginado(number)}>{number}</a>
                       </li>
                    ))

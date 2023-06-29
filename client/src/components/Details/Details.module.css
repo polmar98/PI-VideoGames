@@ -86,3 +86,24 @@
     margin-top: 0px;
     padding-top: 0px;
 }
+
+.Retornar {
+    margin-top: 5px;
+    font-size: 16px;
+    color: white;
+    background-color: black;
+    outline: 2px solid white;
+    width: 120px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.Retornar:hover {
+    color: yellow;
+    outline: 2px solid yellow;
+}
+
+.Principal {
+    display: flex;
+    justify-content: center;
+}

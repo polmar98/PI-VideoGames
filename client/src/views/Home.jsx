@@ -7,6 +7,7 @@ import { getVideos,
          filterVideosbyOrigen,
          orderByName,
          orderByRating,
+         cambiarPagina
        } from "../Redux/actions";
 import Cards from "../components/Cards/Cards"
 import Paginado from "../components/Paginado/Paginado";
@@ -19,9 +20,11 @@ export default function Home(props) {
     const dispatch = useDispatch();
     const Videos = useSelector((state) => state.videoGames);
     const Genres = useSelector((state) => state.GenresState);
+    const retorno = useSelector((state) => state.retorno);
+    const pagActual = useSelector((state) => state.paginaActual);
     const jfiltro = useSelector((state) => state.filtroOrigen);
     //declaramos las variables para el paginado
-    const [currentPage, setCurrentPage] = useState(1);   //inicializamos la primera pagina en 1
+    const [currentPage, setCurrentPage] = useState(pagActual);   //inicializamos la primera pagina en 1
     const videosPerPage = 15; //declaramos 15 videos x pagina
     const indexOfLastVideo = currentPage * videosPerPage;  //declaramos indice del ultimo video
     const indexOfFirtsVideo = indexOfLastVideo - videosPerPage;  //declaramos indice del primer video
@@ -29,10 +32,11 @@ export default function Home(props) {
     console.log("DesdeHome:",jfiltro);
     const paginado = (pageNumber) => {
         setCurrentPage(pageNumber);
+        dispatch(cambiarPagina(pageNumber));
     }
 
     useEffect(() => {
-        dispatch(getVideos());
+        dispatch(getVideos(retorno));
         dispatch(getGenres());
     },[]);
 
@@ -43,18 +47,22 @@ export default function Home(props) {
 
     function handleFilterGenre(e) {
           dispatch(filterVideosByGenre(e.target.value));
+          setCurrentPage(1);
     };
 
     function handleFilterOrigen(e) {
         dispatch(filterVideosbyOrigen(e.target.value));
+        setCurrentPage(1);
     };
 
     function handleOrderByName(e) {
         dispatch(orderByName(e.target.value));
+        setCurrentPage(1);
     };
 
     function handleOrderByRating(e) {
         dispatch(orderByRating(e.target.value));
+        setCurrentPage(1);
     };
 
 
@@ -97,6 +105,7 @@ export default function Home(props) {
                   videosPerPage={videosPerPage}
                   lenVideos={Videos.length}
                   paginado={paginado}
+                  actualPage={currentPage}
               />
            </div>
            <SearchBar/>
